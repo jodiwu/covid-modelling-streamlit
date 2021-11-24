@@ -254,12 +254,31 @@ score = Evaluate(df_target_test,pred).evaluate()
 
 
 ##### DISPLAY #####
+st.set_page_config(layout="wide")
+
+col1, col2, col3, col4, col5, col6 = st.columns(6)
+# home_link = 'http://github.com'
+# with col2:
+#     if st.button("Home"):
+#         st.markdown(home_link, unsafe_allow_html=True)
+
+# with col5:
+#     if st.button("Predict"):
+#         st.markdown(home_link, unsafe_allow_html=True)
+
+with col2:
+    home_link = '[Home](https://covid-backend-modelling.herokuapp.com/)'
+    st.markdown(home_link, unsafe_allow_html=True)
+with col6:
+    predict_link = '[Predict](https://covid-backend-modelling.herokuapp.com/view)'
+    st.markdown(predict_link, unsafe_allow_html=True)
+
 st.title("Predicting Singapore's Straits Times Index (STI) growth amidst COVID-19 using Polynomial Regression")
 st.write("")
 st.write("**Dataset that we will be using:**")
 st.dataframe(df)
 st.write("")
-st.write("")
+st.write("For our final model, we are making use of all the features (excluding STI Price) shown in the table above, and the STI Price is the target. In our model, we perform a polynomial transformation of degree 3 on the variables **7 days Moving Average**, **Still Hospitalised** and **Percentage Vaccinated**.")
 st.write("")
 st.write("**Visualisation of STI against each feature:**")
 # fig = plt.scatter(df_features_test["Date"], df_target_test)
